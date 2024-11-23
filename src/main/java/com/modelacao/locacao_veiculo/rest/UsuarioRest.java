@@ -16,11 +16,35 @@ public class UsuarioRest {
 
     public UsuarioService usuarioService;
 
-    @PostMapping()
+    @PostMapping("/Registrar")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Optional<Usuario>> save(@RequestBody Usuario usuario) {
         usuarioService.registrar(usuario);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/autenticar")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<String> autenticar(@RequestBody Usuario usuario) {
+        Boolean autenticacao = usuarioService.autenticar(usuario.email, usuario.senha);
+        if(autenticacao){
+            return new ResponseEntity<>("Usuário não encontrado ou senha incorreta", HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>("Usuario correto", HttpStatus.OK);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<String> eliminar(@PathVariable("id") Long id){
+        usuarioService.eliminar(id);
+        return ResponseEntity.status(HttpStatus.OK).body("Usuário eliminado");
+    }
+
+    @PutMapping("/atualizar_cnh/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<String> atualizar(@PathVariable("id") Long id){
+        usuarioService.vincularCnh(id);
+        return ResponseEntity.status(HttpStatus.OK).body("Usuário eliminado");
     }
 
 }
