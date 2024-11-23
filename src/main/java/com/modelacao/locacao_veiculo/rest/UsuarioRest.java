@@ -18,7 +18,7 @@ public class UsuarioRest {
 
     @PostMapping("/Registrar")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Optional<Usuario>> save(@RequestBody Usuario usuario) {
+    public ResponseEntity<Optional<Usuario>> registrar(@RequestBody Usuario usuario) {
         usuarioService.registrar(usuario);
         return ResponseEntity.ok().build();
     }
@@ -42,7 +42,7 @@ public class UsuarioRest {
 
     @PutMapping("/atualizar_cnh/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> atualizar(@PathVariable("id") Long id){
+    public ResponseEntity<String> vincularCnh(@PathVariable("id") Long id){
         usuarioService.vincularCnh(id);
         return ResponseEntity.status(HttpStatus.OK).body("Usuário eliminado");
     }
