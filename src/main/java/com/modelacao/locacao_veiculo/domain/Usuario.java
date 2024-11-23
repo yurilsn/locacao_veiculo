@@ -9,6 +9,8 @@ import lombok.ToString;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -32,7 +34,7 @@ public class Usuario {
     public String senha;
 
     @Column
-    private String cnh;
+    private Boolean cnh;
 
     @Column
     protected Integer nivelPermissao;
@@ -44,4 +46,8 @@ public class Usuario {
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Cliente cliente;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id")
+    private List<Locacao> locacaos;
 }
