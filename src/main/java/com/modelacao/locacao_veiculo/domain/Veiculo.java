@@ -34,6 +34,10 @@ public class Veiculo{
     @Column
     public LocalDate dataRegistro;
 
+    @Column
+    private Integer valor;
+
+
     @OneToOne(mappedBy = "veiculo", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Carro carro;
@@ -41,5 +45,9 @@ public class Veiculo{
     @OneToOne(mappedBy = "veiculo", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Moto moto;
+
+    @ManyToOne
+    @JoinColumn(name = "locacao_id")
+    private Locacao locacaoId;
 
 }
