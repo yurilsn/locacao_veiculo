@@ -33,6 +33,9 @@ public class Locacao {
     @Column
     public LocalDate dataFim;
 
+    @Column
+    private Integer valor;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_locacao", referencedColumnName = "idLocacao")
     private List<Veiculo> veiculos;

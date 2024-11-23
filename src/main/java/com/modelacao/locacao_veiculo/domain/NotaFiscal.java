@@ -35,6 +35,9 @@ public class NotaFiscal {
     @Column
     private String cliente;
 
+    @Column
+    private Integer valorTotal;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_cliente")
     private Usuario idUsuario;
