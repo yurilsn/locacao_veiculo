@@ -46,8 +46,4 @@ public class Usuario {
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Cliente cliente;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id")
-    private List<Locacao> locacaos;
 }
