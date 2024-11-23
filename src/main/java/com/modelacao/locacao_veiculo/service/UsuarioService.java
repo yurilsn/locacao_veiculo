@@ -31,9 +31,9 @@ public class UsuarioService {
     }
 
     public void vincularCnh(Long id){
-        Usuario novoUsuario = usuarioRepository.findById(id).orElseThrow();
-        novoUsuario.setCnh(novoUsuario.getCnh());
-        usuarioRepository.save(novoUsuario);
+        Usuario cnhUsuario = usuarioRepository.findById(id).orElseThrow();
+        cnhUsuario.setCnh(true);
+        usuarioRepository.save(cnhUsuario);
     }
 
 }
