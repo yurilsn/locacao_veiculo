@@ -38,8 +38,4 @@ public class NotaFiscalRest {
         return ResponseEntity.ok().build();
     }
 
-//    @PostMapping
-//    public ResponseEntity<String> criarNota(){
-//
-//    }
 }

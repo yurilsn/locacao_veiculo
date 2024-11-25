@@ -7,12 +7,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class CarroService{
-    private VeiculoRepository veiculoRepository;
+public class VeiculoService {
 
-    public void adcionarRodaReserva(Veiculo veiculo, Integer valor){
-        Veiculo veiculoAddRoda = veiculoRepository.findById(veiculo.getPlaca()).orElseThrow();
-        veiculoAddRoda.setValor(veiculo.getValor() + valor);
+    private VeiculoRepository veiculoRepository;
+    public void registrar(Veiculo veiculo){
         veiculoRepository.save(veiculo);
-    }
+
+    };
+    public void atribuirIdentificacao(){
+
+    };
 }
